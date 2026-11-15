@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Agende 1 hora com donos de negócios e profissionais. Presencial ou online, com Pix.">
+<meta property="og:title" content="expose.it | Fale direto com quem decide">
+<meta property="og:description" content="Agende 1 hora com donos de negócios e profissionais, presencial ou online.">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCI+PGNpcmNsZSBjeD0iNjQiIGN5PSI1NCIgcj0iNDQiIGZpbGw9IiNEMEY4MDIiLz48cGF0aCBkPSJNMjMgNjYgQzI2IDgyIDI4IDkyIDI0IDEwMSBDMjIuNSAxMDUuNSAyNi41IDEwNy41IDMwLjUgMTA0LjUgQzM1IDEwMCA0MSA5NS41IDUwIDkzIFoiIGZpbGw9IiNEMEY4MDIiLz48cGF0aCBkPSJNNjQgMjYgUTY3LjUgNTAuNSA5MCA1NCBRNjcuNSA1Ny41IDY0IDgyIFE2MC41IDU3LjUgMzggNTQgUTYwLjUgNTAuNSA2NCAyNiBaIiBmaWxsPSIjMTMxMzEzIiBzdHJva2U9IiMxMzEzMTMiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPgo=">
+<style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>expose.it</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Manrope:wght@500;600;700&display=swap">
+<style>
+/* Layout: coluna única de celular (máx 600px). Dor, solução, vitrine com filtros, perfil e página de Pix por hash. Identidade expose.it: preto + neon, tema escuro único */
+:root{
+  --neon:#D0F802; --tinta:#0A0A0A; --bg:#050505; --surface:#141414; --sunk:#1F1F1F; --line:#2A2A2A;
+  --fg:#FFFFFF; --muted:#A3A3A3; --neon-soft:#232B06; --red:#FF6B6B;
+  --glow:0 0 22px rgba(208,248,2,.42);
+  --display:"Nunito","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"Manrope",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:600px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main.wrap{padding-block:0 56px}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--neon);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:900;margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+.muted{color:var(--muted)}
+.label{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--neon)}
+section{margin-top:44px}
+section > h2{font-size:26px;line-height:1.05;margin:6px 0 14px}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:11px;gap:12px}
+.logo{font-family:var(--display);font-weight:900;font-size:22px;letter-spacing:-.03em;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.logo i{font-style:normal;color:var(--neon)}
+.mk{filter:drop-shadow(0 0 8px rgba(208,248,2,.45))}
+.pill-btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;text-decoration:none}
+
+.hero{padding-top:30px;display:flex;flex-direction:column;gap:14px}
+.hero h1{font-size:40px;line-height:.98}
+.hero h1 mark{background:var(--neon);color:var(--tinta);padding:0 .2em;border-radius:12px;box-shadow:var(--glow)}
+.hero .lead{font-size:16.5px;color:#D6D6D6}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;background:var(--neon);color:var(--tinta);font-weight:800;font-size:16px;padding:15px 22px;text-decoration:none;box-shadow:var(--glow)}
+.cta.ghost{background:var(--surface);color:var(--fg);box-shadow:none;border:1px solid var(--line)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.ctas > *{flex:1 1 200px}
+.proof{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.proof span{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--sunk);color:#D6D6D6}
+
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vs > div{border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.vs .sem{background:var(--surface);border:1px solid var(--line)}
+.vs .com{background:var(--neon);color:var(--tinta)}
+.vs h3{font-size:17px}
+.vs ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.35}
+.vs li{display:flex;gap:8px}
+.vs .sem li::before{content:"✕";color:var(--red);font-weight:800}
+.vs .com li::before{content:"✓";font-weight:900}
+@media (max-width:420px){.vs{grid-template-columns:1fr}}
+
+.steps{display:grid;gap:10px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px}
+.step::before{counter-increment:s;content:counter(s);width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--neon-soft);color:var(--neon);font-family:var(--display);font-weight:900;font-size:20px}
+.step b{display:block;font-size:15.5px}
+.step span{font-size:14px;color:var(--muted)}
+
+.search{position:relative}
+.search input{width:100%;font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:13px 16px 13px 42px}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;margin-top:12px}
+.seg button{border:0;background:none;border-radius:999px;padding:9px 6px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--neon);color:var(--tinta)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;color:#D6D6D6}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--tinta);border-color:var(--fg)}
+
+.list{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.card{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;text-decoration:none;transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--neon)}
+.av{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:22px;background:var(--neon);color:var(--tinta);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.av.lg{width:84px;height:84px;font-size:28px;border-radius:20px}
+.card h3{font-size:18px}
+.card .go{font-size:22px;color:var(--neon)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--sunk);color:#D6D6D6}
+.tag.n{background:var(--neon-soft);color:var(--neon)}
+.card.soon{border-style:dashed;background:transparent;grid-template-columns:64px minmax(0,1fr)}
+.card.soon .av{background:var(--sunk);color:var(--neon)}
+.empty{text-align:center;padding:26px 16px;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}
+.empty button{margin-top:10px;border:0;background:var(--sunk);border-radius:999px;padding:7px 14px;font-weight:700;color:var(--fg)}
+
+.gets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.get{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;min-width:0}
+.get b{display:block;font-family:var(--display);font-size:19px;margin-bottom:4px}
+.get span{font-size:13.5px;color:var(--muted)}
+.get.wm{grid-column:1/-1;background:var(--neon);color:var(--tinta);border:0;box-shadow:var(--glow)}
+.get.wm span{color:var(--tinta);font-weight:600}
+@media (max-width:420px){.gets{grid-template-columns:1fr}}
+
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price-card{border-radius:18px;padding:18px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.price-card.main{border:2px solid var(--neon)}
+.price-card b{display:block;font-family:var(--display);font-size:34px;line-height:1}
+.price-card small{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+details + details{margin-top:8px}
+summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";color:var(--neon);font-weight:900}
+details[open] summary::after{content:"−"}
+details p{margin-top:8px;color:#D6D6D6;font-size:14px}
+
+.back{display:inline-block;margin-top:18px;color:var(--muted);font-weight:700;font-size:14px;text-decoration:none}
+.phead{display:flex;gap:14px;align-items:center;margin-top:16px}
+.phead h2{font-size:28px;line-height:1.02}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:14px}
+.box h3{font-size:16px;margin-bottom:10px}
+ul.dots{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.dots li{display:flex;gap:10px}
+ul.dots li::before{content:"";flex:0 0 8px;height:8px;margin-top:8px;border-radius:999px;background:var(--neon)}
+.quote{font-family:var(--display);font-size:21px;line-height:1.2;margin-top:16px}
+.ig-link{display:inline-flex;gap:6px;align-items:center;margin-top:6px;font-weight:700;color:var(--neon);text-decoration:none;font-size:14px}
+.options{display:grid;gap:10px;margin-top:14px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;border-radius:18px;padding:16px 18px;text-decoration:none;font-weight:800}
+.opt small{display:block;font-weight:500;font-size:13px;opacity:.8}
+.opt .v{font-family:var(--display);font-size:26px;white-space:nowrap}
+.opt.p{background:var(--neon);color:var(--tinta);box-shadow:var(--glow)}
+.opt.o{background:var(--fg);color:var(--tinta)}
+.opt.off{background:var(--sunk);color:var(--muted);pointer-events:none;box-shadow:none}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+
+.pix{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.qr{background:#fff;padding:12px;border-radius:16px;min-height:40px}
+.qr img,.qr canvas{display:block;width:210px;height:210px;max-width:100%}
+.big{font-family:var(--display);font-size:40px;line-height:1}
+.copy{display:flex;gap:8px;width:100%}
+.copy input{flex:1;min-width:0;font:12.5px ui-monospace,Menlo,monospace;color:var(--fg);background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:12px}
+.copy button{border:0;border-radius:12px;padding:0 16px;font-weight:800;background:var(--fg);color:var(--tinta)}
+.wa{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border-radius:999px;padding:15px;font-weight:800;font-size:16px;text-decoration:none;background:var(--neon);color:var(--tinta);box-shadow:var(--glow)}
+.psteps{counter-reset:p;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
+.psteps li{counter-increment:p;display:flex;gap:12px;align-items:flex-start;font-size:14.5px}
+.psteps li::before{content:counter(p);flex:0 0 26px;height:26px;border-radius:999px;background:var(--neon);color:var(--tinta);font-weight:900;display:grid;place-items:center;font-size:13px}
+.seg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.seg2 a{border:1px solid var(--line);border-radius:999px;padding:9px;font-weight:700;font-size:13.5px;text-decoration:none;color:var(--muted)}
+.seg2 a[aria-current="true"]{background:var(--fg);color:var(--tinta);border-color:var(--fg)}
+
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+footer b{color:var(--fg);font-family:var(--display);font-size:18px}
+footer b i{font-style:normal;color:var(--neon)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--tinta);padding:10px 16px;border-radius:999px;font-weight:800;font-size:14px;z-index:20}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .22s ease}@keyframes in{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="expose.it, início"><svg class="mk" viewBox="0 0 120 120" width="30" height="30" aria-hidden="true"><circle cx="64" cy="54" r="44" fill="#D0F802"/><path d="M23 66 C26 82 28 92 24 101 C22.5 105.5 26.5 107.5 30.5 104.5 C35 100 41 95.5 50 93 Z" fill="#D0F802"/><path d="M64 26 Q67.5 50.5 90 54 Q67.5 57.5 64 82 Q60.5 57.5 38 54 Q60.5 50.5 64 26 Z" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round"/></svg><span>expose<i>.</i>it</span></a>
+    <a class="pill-btn" id="ig-top" href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO
+   ========================================================= */
+const CONFIG = {
+  instagram: "https://instagram.com/expose.it",
+  whatsapp: "11987360401",
+  pixChave: "exposeit2026@gmail.com",
+  pixNome: "Marcelo Bragato Gabriele",   // titular da conta Pix
+  pixCidade: "SAO PAULO",
+  precoPresencial: 147,
+  precoOnline: 97
+};
+
+/* =========================================================
+   PARCEIROS: para adicionar, copie um bloco.
+   tipo: "Estabelecimento" ou "Profissional"
+   quem: como chamar a pessoa sem expor o nome ("o dono", "a dentista")
+   ========================================================= */
+const PARCEIROS = [
+  {
+    slug: "vede-bar",
+    nome: "Vedê Bar",
+    tipo: "Estabelecimento",
+    categoria: "Bar",
+    cidade: "Santo André",
+    quem: "o dono",
+    instagram: "https://instagram.com/vede.bar",
+    foto: "", video: "", frase: "",
+    procura: [],
+    calPresencial: "https://cal.com/exposeit/vede-bar-presencial",
+    calOnline: "https://cal.com/exposeit/vede-bar-online"
+  },
+  {
+    slug: "a-casa-912",
+    nome: "A Casa 912",
+    tipo: "Estabelecimento",
+    categoria: "Bar",
+    cidade: "Santo André",
+    quem: "o dono",
+    instagram: "https://instagram.com/acasa912",
+    foto: "", video: "", frase: "",
+    procura: [],
+    calPresencial: "https://cal.com/exposeit/a-casa-912-presencial",
+    calOnline: "https://cal.com/exposeit/a-casa-912-online"
+  }
+];
+/* QR Codes prontos (gerados com a chave e os valores acima; se mudar a chave ou o valor, gere de novo) */
+const QR={147:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQAAAABzOEqLAAAD0klEQVR4Xu1cXW/jMAyLD/v/f9kHkZTiPgww/RAEqzhsbdP63IjRt3JjXib+mZ+/eoWBlu4+npDVNVNB5nVN/OGTQDy54gjeAOZ84lt97x4/IeMQ9MDDiN854uEac15jXtcYMx70qS+W1RNXSfARLKS0r5C9mInDY4Kb5VNPfKveI1gBLVSN+Bv2Kg6l3ggtq334soJ+LAhCYLTCXsUrvbjh79Er9gE+5KzhJuIl7VdQAn7ybf6rLd19+LJa46vQh99/iI6vHPh8SCXgNKgAeEBcBSWZI/Wl/YdDxaEt+ZHsEUaBirRU5IYJCAPhMF7zgPMnzuOv7AFFSCchV6Hw96Yg0xPw9VfO/MXnEUEUAypGU8rZI0vnO2CEWeKbz8PCa/lArgFbRK8h2TPuncjSaaxI02vPw8R7z4MZX8hfbpx2CxzxN1UmVOS95+HhnedB/4HKSOYZ9WSJsvA2Femd5/GHvpXooF0KLdETuBIGweFHUNiarR8O/KuE9RIoBzw6HHgRUlVGln3bf5g44iNquLRW4EFiZxwsRyItge74e/QKA2g7sUzCP/FQaWD2plRH6XqJh7MrMV16OIjBiq56hdAPBcHhSzof9HDEx6CtAhnVmwqrVeUTEtH1XY+Mo1xtbY4rlKpd1VFfuufx6Se+1ffuEfVEmifl6dAFlnZBDJMO2bS2Vx5Or6vqPkWaUQ1C4u4Rdrzr4owPJd73gMnixRX2pvfoeokFn4+7P0izpAA3VYNDWOuIVvsPAz4fsSI5QJIeL1RPZPCrXIQV4K6XWPD5yBI7OWBdsWq6rGypVpJlRn+PXrGPtT/IzrmCrQp7dSDb6S1dA/6VyNohW041isgy4jKyeIdazYeDIz5qsCQLvWqgq6CreZNqsvt79Ip9SFZojlehilOKtF45/sNiSse7FvwrkZe9uoSyU2Iij5YlY/Tl79Er9pH3G5CUpAY5B1qFKCSqV0u0dPfhyyr75+nCK8TV8C59fDn49ucWzvhggsHhnrtBmDMMNe4jP+/v0Sv2EfaqBhHXYYYPQ5XV3/hkS3cfvqzYdlr8xp0V1t1RVXsHSf4evWIfP9ndABFsA2aKnpOi8iDyJS3dffiyyn4Uh9cr6VvvjsoJ+O5/7BNxHIuu99fmzI9KKFALDmbVDZ+df1jwGVzur5V6KLiVWqgfpaGTjnc9HPJBZHm9SrsalLvfbn9uwufjcwVHGXK8/S75cri37/9w4fORY1YqvC9NqRV5523A36NXGPj8/0t02w0n2TE5ihlRBcI40NLdhy+ruw+4C3+PXrGPltU+npDVf1uN5ZptSDrtAAAAAElFTkSuQmCC",97:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQAAAABzOEqLAAAD6UlEQVR4Xu1bi4rcMAyMj/3/X3bRzMjxHRQ8DoSw0bRl080GOZL1lls/TPyYvz/qCQPF3XXcwavPcTSuqB9H67ju/KTmtPlOXN+xqvfS+CTj29FCAiEVigDS6SGcuJR4WlkfB5v7qoUIQgIhFOlFfPaQUtfN/NUmDQtFY9gsqEmjaEItjtZDQU52Fq/WcYlXtEvx9wj/AdXQxbyCSzQW8V4a4T+GhZKJSj/SpSG6r8j4vby6482PsEaKr8Jh/P+PftXvWNV7acBFELBU0hYEVWG2+Dn/7L28uunNFVsh1wj1wBcRcvVw5RAJg2CGYTetysQ3rQp8Dt+NLANOvNOMwafDuysJKXlY8HeJ7FVm5kz9qBMIrygWWLLy55YsLuxdmCaohuTDLB3/CzulygkTw9tWZeGbVqW0b4S9SD7k2ZmIIAwLeVW9xIK/S8ho+vFwGuNC3+Ej9CNvVLxrYFse1I2QB9UkRaRvhR7wadQT6/jRzm+IqFAvCVfCyu5I3akh4V7KfzjY2omstNNZ03uzxk43DlFIPNCdLRom3ksjQ1lWEhnWKviNnERenfcY/b6XV7e9+SyC7BJSLUI9IvKlqcK/21Zl4VtWpY2fzVlWrEZzMNNAqQ305Fve/JnvodxjdDiUk/81VNyrsGnPfI9vWZViXOYeyjGYc/ypw+fNincNbO6SdA2Kb1kkYU6iKFgZe/lzD5vyyNoIo92otLOgS8mMoR9eXKCxjPfS+CiqRe6njGOoC00WqlYazKr4yoK/rzh/lVFVIrnP/uAZcQV8GvXEOpQHsuSeVd2p7yFzhZYUpVbcXccWr1QQiToJPLiCWxRQZKlQ/NX3WzRMvJcGZDDVdEdpN9shCHwV/+Ljvby6482zoquIdriKeb4ku7Vlr1xckCCjXBooVHdzpFdVd9yv/qAHXx6aT6QwlJKzisXB0UwNz1zEp1FPrCPkgVkGhbijOZiTJfNpg4p3TeztRCR8TMk1+xZXmC7BqDudi/pTmzQ87L2Hh8fSiKiJPcJwEOh56HDO7za6aiePfQ8Tz30PCkHnoth5Ggl6lrQ0o1j5oAVf5nF+cAy9jbw867lnces8OeXTqCfW8Xu+PUdF1TbMSCsPEUKNirvr8Hk1na+NignTQzhwFXfjGqekMiD2adQT65jO1+aU6Bhoz9lqTrwzyir9cODvROSDObxOxqOUezbUUyypMj6NemIdkIeQ9fYUT9bidTxKCXtxdx0+r2Z5pP9QnYTF9zEnl+bMp1FPrGM+X5vJOEwUT+SMTCRnFys/d+DvRNSvSELdc7rt0SxMozWOS/k06ol1TPnHIoq76yhereOZvPoHnV/S0xfcIikAAAAASUVORK5CYII="};
+const EM_BREVE = ["Dentistas","Engenheiros","Advogados","Restaurantes","Clínicas","Academias"];
+
+/* ========================================================= */
+const app=document.getElementById("app");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const brl=n=>"R$"+Number(n).toFixed(0);
+const ini=s=>s.replace(/[^A-Za-zÀ-ÿ0-9 ]/g,"").split(/\s+/).filter(Boolean).map(p=>p[0]).slice(0,2).join("").toUpperCase();
+const norm=s=>String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const waNum=()=>"55"+CONFIG.whatsapp.replace(/\D/g,"").replace(/^55/,"");
+const wa=t=>`https://wa.me/${waNum()}?text=${encodeURIComponent(t)}`;
+const fmtWa=n=>{const d=n.replace(/\D/g,"").replace(/^55/,"");return `(${d.slice(0,2)}) ${d.slice(2,-4)}-${d.slice(-4)}`};
+const igHandle=u=>"@"+u.split("/").filter(Boolean).pop();
+let F={q:"",tipo:"Todos",cat:"Todas",cid:"Todas"};
+document.getElementById("ig-top").href=CONFIG.instagram;
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>e.hidden=true,2200)}
+function avatar(d,lg){return `<div class="av ${lg?"lg":""}" aria-hidden="true">${d.foto?`<img src="${esc(d.foto)}" alt="">`:esc(ini(d.nome))}</div>`}
+
+/* ---------- Início ---------- */
+function vHome(){
+  return `<div class="view">
+  <section class="hero" style="margin-top:0">
+    <span class="label">Networking que dá match</span>
+    <h1>Fale direto com <mark>quem decide</mark></h1>
+    <p class="lead">Chegar no dono de um bar, numa dentista ou num engenheiro é difícil: ninguém tem tempo pra ouvir quem bate na porta. Aqui você agenda 1 hora com eles, presencial ou online, e apresenta seu negócio com hora marcada.</p>
+    <div class="ctas">
+      <button class="cta" data-scroll="vitrine">Ver quem está disponível</button>
+      <button class="cta ghost" data-scroll="como">Como funciona</button>
+    </div>
+    <div class="proof"><span>São Paulo e Grande ABC</span><span>Presencial ou online</span><span>Pagamento no Pix</span></div>
+  </section>
+
+  <section>
+    <span class="label">O problema</span>
+    <h2>Chegar em quem decide é a parte mais difícil</h2>
+    <div class="vs">
+      <div class="sem"><h3>Do jeito antigo</h3><ul>
+        <li>Visita sem hora marcada</li><li>Recado com funcionário</li><li>Mensagem que ninguém responde</li><li>Dono sem tempo pra ouvir</li></ul></div>
+      <div class="com"><h3>Com o expose.it</h3><ul>
+        <li>Horário garantido na agenda</li><li>1 hora só pra sua proposta</li><li>Quem decide esperando você</li><li>Seu negócio em vídeo no perfil</li></ul></div>
+    </div>
+  </section>
+
+  <section id="como">
+    <span class="label">Como funciona</span>
+    <h2>3 passos e você está na mesa</h2>
+    <div class="steps">
+      <div class="step"><div><b>Escolha com quem quer falar</b><span>Estabelecimentos e profissionais de São Paulo e do Grande ABC.</span></div></div>
+      <div class="step"><div><b>Agende e pague no Pix</b><span>Presencial ${brl(CONFIG.precoPresencial)} ou online ${brl(CONFIG.precoOnline)}. O QR Code aparece na hora.</span></div></div>
+      <div class="step"><div><b>Converse e apareça</b><span>Leve sua proposta, sua ideia ou suas dúvidas. Depois, seu negócio ganha um vídeo no nosso perfil.</span></div></div>
+    </div>
+  </section>
+
+  <section id="vitrine">
+    <span class="label">Quem está disponível</span>
+    <h2>Escolha com quem quer conversar</h2>
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#A3A3A3" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="#A3A3A3" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Busque por nome, área ou cidade" aria-label="Buscar" value="${esc(F.q)}">
+    </div>
+    <div class="seg" role="group" aria-label="Tipo">${["Todos","Estabelecimento","Profissional"].map(t=>`<button data-tipo="${t}" aria-pressed="${F.tipo===t}">${t==="Todos"?"Todos":t+"s"}</button>`).join("")}</div>
+    <div id="filters"></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section>
+    <span class="label">O que você leva</span>
+    <h2>Mais que uma conversa</h2>
+    <div class="gets">
+      <div class="get"><b>1 hora</b><span>com quem decide, no dia e horário que você escolher</span></div>
+      <div class="get"><b>1 vídeo</b><span>do seu negócio postado no perfil do expose.it</span></div>
+      <div class="get wm"><b>Working Match</b><span>Fechou negócio? A parceria vira vídeo e a gente divulga vocês dois.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Valores</span>
+    <h2>Escolha o formato</h2>
+    <div class="prices">
+      <div class="price-card main"><span class="label">Presencial</span><b>${brl(CONFIG.precoPresencial)}</b><small>No local, cara a cara</small></div>
+      <div class="price-card"><span class="label" style="color:var(--fg)">Online</span><b>${brl(CONFIG.precoOnline)}</b><small>Por videochamada</small></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Dúvidas</span>
+    <h2>Perguntas frequentes</h2>
+    <details><summary>E se não rolar negócio?</summary><p>Você ainda leva 1 hora de conversa com quem já fez acontecer e um vídeo do seu negócio no nosso perfil. Muita parceria nasce depois.</p></details>
+    <details><summary>Como funciona o pagamento?</summary><p>Pelo Pix. Depois de agendar, o QR Code com o valor certo aparece pra você, e é só mandar o comprovante no nosso WhatsApp. A confirmação chega no seu e-mail.</p></details>
+    <details><summary>Posso remarcar?</summary><p>Pode, sem custo, com até 48h de antecedência.</p></details>
+    <details><summary>Tenho um negócio. Como entro na vitrine?</summary><p>É de graça e ainda ganha um vídeo do seu negócio no nosso perfil. <a href="${wa("Oi, expose.it! Tenho um negócio e quero entrar na vitrine.")}" target="_blank" rel="noopener" style="color:var(--neon);font-weight:700">Fale com a gente no WhatsApp</a>.</p></details>
+  </section>
+  ${footer()}
+  </div>`;
+}
+function renderFilters(){
+  const base=PARCEIROS.filter(d=>F.tipo==="Todos"||d.tipo===F.tipo);
+  const cats=["Todas",...new Set(base.map(d=>d.categoria))];
+  const cids=["Todas",...new Set(base.map(d=>d.cidade))];
+  if(!cats.includes(F.cat))F.cat="Todas";if(!cids.includes(F.cid))F.cid="Todas";
+  document.getElementById("filters").innerHTML=(cats.length>2?`<div class="chips" role="group" aria-label="Área">${cats.map(c=>`<button class="chip" data-cat="${esc(c)}" aria-pressed="${F.cat===c}">${c==="Todas"?"Todas as áreas":esc(c)}</button>`).join("")}</div>`:"")
+    +(cids.length>2?`<div class="chips" role="group" aria-label="Cidade">${cids.map(c=>`<button class="chip" data-cid="${esc(c)}" aria-pressed="${F.cid===c}">${c==="Todas"?"Todas as cidades":esc(c)}</button>`).join("")}</div>`:"");
+}
+function renderList(){
+  const q=norm(F.q.trim());
+  const res=PARCEIROS.filter(d=>(F.tipo==="Todos"||d.tipo===F.tipo)&&(F.cat==="Todas"||d.categoria===F.cat)&&(F.cid==="Todas"||d.cidade===F.cid)&&
+    (!q||norm([d.nome,d.categoria,d.cidade,d.tipo,...(d.procura||[])].join(" ")).includes(q)));
+  const soon=`<div class="card soon"><div class="av" aria-hidden="true">+</div><div style="min-width:0"><h3>${F.tipo==="Profissional"?"Profissionais chegando":"Novos parceiros toda semana"}</h3><p class="muted" style="font-size:14px">${EM_BREVE.join(", ")} e muito mais. Segue o expose.it pra não perder.</p></div></div>`;
+  document.getElementById("list").innerHTML=(res.length?res.map(d=>`<a class="card" href="#${esc(d.slug)}">
+      ${avatar(d)}
+      <div style="min-width:0"><h3>${esc(d.nome)}</h3><p class="muted" style="font-size:14px">${esc(d.categoria)} · ${esc(d.cidade)}</p>
+      <div class="tags"><span class="tag n">Presencial ${brl(CONFIG.precoPresencial)}</span><span class="tag">Online ${brl(CONFIG.precoOnline)}</span></div></div>
+      <span class="go" aria-hidden="true">→</span>
+    </a>`).join(""):(F.tipo==="Profissional"&&!q?"":`<div class="empty"><b>Nada encontrado com esses filtros</b><p style="font-size:14px">Tente outra área ou cidade.</p><button id="clear">Limpar filtros</button></div>`))+soon;
+}
+
+/* ---------- Perfil ---------- */
+function vParceiro(d){
+  const quem=d.quem||"o dono";
+  return `<div class="view">
+  <a class="back" href="#">← Ver todos</a>
+  <div class="phead">${avatar(d,true)}<div style="min-width:0"><span class="label">${esc(d.tipo)}</span><h2>${esc(d.nome)}</h2><p class="muted">${esc(d.categoria)} · ${esc(d.cidade)}</p>${d.instagram?`<a class="ig-link" href="${esc(d.instagram)}" target="_blank" rel="noopener">${esc(igHandle(d.instagram))} ↗</a>`:""}</div></div>
+  ${d.frase?`<p class="quote">"${esc(d.frase)}"</p>`:""}
+  ${d.video?`<a class="ig-link" href="${esc(d.video)}" target="_blank" rel="noopener">▶ Assistir o vídeo no Instagram</a>`:""}
+  ${d.procura&&d.procura.length?`<div class="box"><h3>O que ${esc(quem)} procura hoje</h3><ul class="dots">${d.procura.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`:""}
+  <div class="box"><h3>O que está incluso</h3><ul class="dots">
+    <li>1 hora com ${esc(quem)} do ${esc(d.nome)}, no dia e horário que você escolher</li>
+    <li>Um vídeo do seu negócio postado no expose.it</li>
+    <li>Se a parceria fechar, vira Working Match e a gente divulga vocês dois</li>
+  </ul></div>
+  <h3 style="margin-top:26px;font-size:20px">Escolha como quer conversar</h3>
+  <div class="options">
+    <a class="opt p ${d.calPresencial?"":"off"}" href="${esc(d.calPresencial)}" target="_blank" rel="noopener"><span>Presencial<small>No ${esc(d.nome)}</small></span><span class="v">${brl(CONFIG.precoPresencial)}</span></a>
+    <a class="opt o ${d.calOnline?"":"off"}" href="${esc(d.calOnline)}" target="_blank" rel="noopener"><span>Online<small>Por videochamada</small></span><span class="v">${brl(CONFIG.precoOnline)}</span></a>
+  </div>
+  <p class="note">Escolha o horário na agenda. O QR Code do Pix aparece no agendamento, e o horário é confirmado assim que a gente receber o comprovante no WhatsApp.</p>
+  ${footer()}
+  </div>`;
+}
+
+/* ---------- Pix ---------- */
+function crc16(s){let c=0xFFFF;for(let i=0;i<s.length;i++){c^=s.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?((c<<1)^0x1021)&0xFFFF:(c<<1)&0xFFFF}return c.toString(16).toUpperCase().padStart(4,"0")}
+const f=(id,v)=>id+String(v.length).padStart(2,"0")+v;
+const clean=(s,n)=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9 ]/g,"").toUpperCase().slice(0,n);
+function pixPayload(valor){
+  const p="000201"+f("26",f("00","br.gov.bcb.pix")+f("01",CONFIG.pixChave.trim()))+"52040000"+"5303986"+f("54",valor.toFixed(2))+"5802BR"+f("59",clean(CONFIG.pixNome,25)||"EXPOSE IT")+f("60",clean(CONFIG.pixCidade,15)||"SAO PAULO")+f("62",f("05","***"))+"6304";
+  return p+crc16(p);
+}
+function vPix(tipo){
+  const valor=tipo==="online"?CONFIG.precoOnline:CONFIG.precoPresencial;
+  const msg=`Oi, expose.it! Acabei de agendar um encontro ${tipo} e fiz o Pix de ${brl(valor)}. Segue o comprovante 👇`;
+  return `<div class="view">
+  <div class="box pix" style="margin-top:22px">
+    <span class="label">Último passo</span>
+    <h2 style="font-size:26px">Pague o Pix pra garantir seu horário</h2>
+    <div class="seg2"><a href="#pix-presencial" aria-current="${tipo!=="online"}">Presencial</a><a href="#pix-online" aria-current="${tipo==="online"}">Online</a></div>
+    <p class="big">${brl(valor)}</p>
+    <div class="qr" id="qr" role="img" aria-label="QR Code do Pix de ${brl(valor)}"></div>
+    <div class="copy"><input id="pixcode" readonly value="${esc(pixPayload(valor))}" aria-label="Pix copia e cola"><button id="copy">Copiar</button></div>
+    <p class="note" style="margin-top:0">Recebedor: ${esc(CONFIG.pixNome)} · chave ${esc(CONFIG.pixChave)}</p>
+    <ol class="psteps">
+      <li><span>Abra o app do banco e pague com o <b>QR Code</b> ou o <b>Pix copia e cola</b> (o valor já vem preenchido)</span></li>
+      <li><span>Toque no botão abaixo: a conversa com o expose.it abre com a mensagem pronta, é só anexar o comprovante</span></li>
+      <li><span>A confirmação chega no seu e-mail assim que a gente conferir</span></li>
+    </ol>
+    <a class="wa" href="${wa(msg)}" target="_blank" rel="noopener">Enviar comprovante no WhatsApp</a>
+    <p class="note" style="margin-top:0">Prazo de 2 horas. Depois disso o horário volta a ficar livre.<br>WhatsApp: <span style="user-select:all">${esc(fmtWa(CONFIG.whatsapp))}</span></p>
+  </div>
+  ${footer()}
+  </div>`;
+}
+
+function footer(){return `<footer><b>expose<i>.</i>it</b><span>Conversa que vira negócio. São Paulo e Grande ABC.</span><span>WhatsApp: <span style="user-select:all">${esc(fmtWa(CONFIG.whatsapp))}</span> · <a href="${esc(CONFIG.instagram)}" target="_blank" rel="noopener">${esc(igHandle(CONFIG.instagram))}</a></span></footer>`}
+
+/* ---------- Rotas ---------- */
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  const d=PARCEIROS.find(x=>x.slug===h);
+  if(h==="pix-presencial"||h==="pix-online"){app.innerHTML=vPix(h.slice(4));
+    const v=h==="pix-online"?CONFIG.precoOnline:CONFIG.precoPresencial;const el=document.getElementById("qr");if(QR[v]){el.innerHTML=`<img src="${QR[v]}" width="210" height="210" alt="">`}else{el.hidden=true}}
+  else if(d){app.innerHTML=vParceiro(d)}
+  else{app.innerHTML=vHome();renderFilters();renderList()}
+  if(!["como","vitrine"].includes(h))window.scrollTo({top:0});
+}
+app.addEventListener("input",e=>{if(e.target.id==="q"){F.q=e.target.value;renderList()}});
+app.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.scroll){document.getElementById(b.dataset.scroll)?.scrollIntoView({behavior:"smooth",block:"start"})}
+  if(b.dataset.tipo){F.tipo=b.dataset.tipo;document.querySelectorAll("[data-tipo]").forEach(x=>x.setAttribute("aria-pressed",x===b));renderFilters();renderList()}
+  if(b.dataset.cat){F.cat=b.dataset.cat;renderFilters();renderList()}
+  if(b.dataset.cid){F.cid=b.dataset.cid;renderFilters();renderList()}
+  if(b.id==="clear"){F={q:"",tipo:"Todos",cat:"Todas",cid:"Todas"};route()}
+  if(b.id==="copy"){const v=document.getElementById("pixcode").value;const fb=()=>{document.getElementById("pixcode").select();toast("Selecionado, copie com o teclado")};
+    try{navigator.clipboard.writeText(v).then(()=>toast("Pix copiado"),fb)}catch(_){fb()}}
+});
+window.addEventListener("hashchange",route);
+route();
+</script>
+
+</body>
+</html>
